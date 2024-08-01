@@ -5,8 +5,8 @@ import Loader from "./components/loader/loader";
 
 const LandingPage = lazy(() => import("./pages/intro-page"));
 const Authentication = lazy(() => import("./pages/authentication"));
-const SignIn = lazy(() => import("./pages/sub-routes/sign-in"));
-const SignUp = lazy(() => import("./pages/sub-routes/sign-up"));
+const SignInPage = lazy(() => import("./pages/sub-routes/sign-in"));
+const SignUpPage = lazy(() => import("./pages/sub-routes/sign-up"));
 const BrowseShowsMovies = lazy(() => import("./pages/browse"));
 
 export default function App() {
@@ -15,9 +15,9 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/auth" element={<Authentication />}>
-            <Route path="/auth/sign-in" element={<SignIn />} />
-            <Route path="/auth/sign-up" element={<SignUp />} />
+          <Route path="/auth/" element={<Authentication />}>
+            <Route path="/auth/sign-in" element={<SignInPage />} />
+            <Route path="/auth/sign-up" element={<SignUpPage />} />
           </Route>
           <Route path="/browse" element={<BrowseShowsMovies />} />
         </Routes>
