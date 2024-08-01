@@ -18,7 +18,6 @@ export default function useFetchMovies(endpoint) {
         setData(response.data);
       } catch (error) {
         setError(error);
-        console.log(error);
       } finally {
         setIsLoading(false);
       }

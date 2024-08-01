@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import useFetchMovies from "../hooks/useFetchMovies";
 import MovieCard from "./movie-card";
+import Loader from "./loader/loader";
 
 const Row = ({ title, fetchUrl, backup }) => {
   const [movies, setMovies] = useState([]);
@@ -36,8 +37,8 @@ const Row = ({ title, fetchUrl, backup }) => {
 
   if (isLoading) {
     return (
-      <div className="flex h-[50vh] w-full items-center justify-center">
-        <p>loading</p>
+      <div className="mb-16 mt-8 h-[96px] w-[100vw] space-y-8 md:h-[130px] lg:h-[168px]">
+        <Loader />
       </div>
     );
   }

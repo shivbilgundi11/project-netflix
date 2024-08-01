@@ -7,6 +7,8 @@ import { bannerObj } from "../db/banner";
 import useFetchMovies from "../hooks/useFetchMovies";
 import { backgroundURL } from "../lib/utils";
 
+import Loader from "../components/loader/loader";
+
 const truncate = (string, num) => {
   return string?.length > num ? string.substr(0, num - 1) + "..." : string;
 };
@@ -27,8 +29,8 @@ const Banner = () => {
 
   if (isLoading) {
     return (
-      <div className="flex h-[50vh] w-full items-center justify-center">
-        <p>loading</p>
+      <div className="flex h-[80vh] w-full items-center justify-center">
+        <Loader />
       </div>
     );
   }

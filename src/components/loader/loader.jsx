@@ -3,7 +3,7 @@ import "./loader.css";
 export default function Loader() {
   return (
     <>
-      <div className="flex min-h-screen w-full items-center justify-center bg-black">
+      <div className="flex h-full w-full items-center justify-center bg-black">
         <div className="loader">
           <div className="bar1"></div>
           <div className="bar2"></div>
