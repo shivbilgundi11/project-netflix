@@ -34,7 +34,7 @@ export default function LandingPage() {
 
         {/* Hero Section... */}
         <div className="max-container mx-auto flex h-full flex-col items-center justify-center gap-y-4 text-center sm:gap-y-5 md:gap-y-6">
-          <h1 className="font-netflixBold max-w-[350px] text-[32px] sm:max-w-none md:text-4xl">
+          <h1 className="max-w-[350px] font-netflixBold text-[32px] sm:max-w-none md:text-4xl">
             Enjoy big movies, hit series and more from &#8377;149.
           </h1>
 

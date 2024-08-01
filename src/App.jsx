@@ -1,3 +1,4 @@
+import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/clerk-react";
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -11,17 +12,27 @@ const BrowseShowsMovies = lazy(() => import("./pages/browse"));
 
 export default function App() {
   return (
-    <>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/auth/" element={<Authentication />}>
-            <Route path="/auth/sign-in" element={<SignInPage />} />
-            <Route path="/auth/sign-up" element={<SignUpPage />} />
-          </Route>
-          <Route path="/browse" element={<BrowseShowsMovies />} />
-        </Routes>
-      </Suspense>
-    </>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth" element={<Authentication />}>
+          <Route path="sign-in" element={<SignInPage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
+        </Route>
+        <Route
+          path="/browse"
+          element={
+            <>
+              <SignedIn>
+                <BrowseShowsMovies />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
+          }
+        />
+      </Routes>
+    </Suspense>
   );
 }

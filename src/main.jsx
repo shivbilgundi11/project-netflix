@@ -17,6 +17,7 @@ if (!PUBLISHABLE_KEY) {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ClerkProvider
+      afterSignOutUrl={"/auth/sign-in"}
       publishableKey={PUBLISHABLE_KEY}
       appearance={{
         baseTheme: [neobrutalism],
