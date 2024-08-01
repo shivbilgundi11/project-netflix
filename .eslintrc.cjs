@@ -12,10 +12,10 @@ module.exports = {
   settings: { react: { version: "18.2" } },
   plugins: ["react-refresh", "simple-import-sort"],
   rules: {
-    "react/prop-types": "off",
-    "react-refresh/only-export-components": "off",
-    "react/no-unescaped-entities": "off",
-    "no-unused-vars": "warn",
-    "simple-import-sort/imports": "error",
+    // "react/prop-types": "off",
+    // "react-refresh/only-export-components": "off",
+    // "react/no-unescaped-entities": "off",
+    // "no-unused-vars": "warn",
+    // "simple-import-sort/imports": "error",
   },
 };
