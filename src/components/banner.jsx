@@ -15,19 +15,32 @@ const truncate = (string, num) => {
 
 const Banner = () => {
   const [movie, setMovie] = useState();
-  const { data, error, isLoading } = useFetchMovies(requests.fetchActionMovies);
+  const [loading, setLoading] = useState(true);
+
+  const { data, error } = useFetchMovies(requests.fetchActionMovies);
 
   useEffect(() => {
-    if (!error) {
-      setMovie(
-        data?.results[Math.floor(Math.random() * data?.results.length - 1)],
-      );
-    } else {
-      setMovie(bannerObj);
-    }
-  }, [data, error]);
+    const fetchTimeout = setTimeout(() => {
+      if (loading) {
+        setMovie(bannerObj[Math.floor(Math.random() * bannerObj.length)]);
+        setLoading(false);
+      }
+    }, 1000);
 
-  if (isLoading) {
+    if (data?.results?.length) {
+      setMovie(data.results[Math.floor(Math.random() * data.results.length)]);
+      setLoading(false);
+      clearTimeout(fetchTimeout);
+    } else if (error || !data?.results?.length) {
+      setMovie(bannerObj[Math.floor(Math.random() * bannerObj.length)]);
+      setLoading(false);
+      clearTimeout(fetchTimeout);
+    }
+
+    return () => clearTimeout(fetchTimeout);
+  }, [data, error, loading]);
+
+  if (loading) {
     return (
       <div className="flex h-[80vh] w-full items-center justify-center">
         <Loader />
